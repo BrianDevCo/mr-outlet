@@ -35,7 +35,7 @@ export default function Navbar() {
       }`}
       style={scrolled ? { backgroundColor: "var(--navbar-bg)" } : {}}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
           <Image
@@ -111,7 +111,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden border-t border-[#FF5229]/20 px-6 py-4 flex flex-col gap-4"
+          className="md:hidden border-t border-[#FF5229]/20 px-4 py-4 flex flex-col gap-2"
           style={{ backgroundColor: "var(--surface)" }}
         >
           {links.map((l) => (
@@ -119,7 +119,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-gray-300 hover:text-[#FF5229] transition-colors py-1"
+              className="text-gray-300 hover:text-[#FF5229] transition-colors py-2.5 text-base"
             >
               {l.label}
             </a>

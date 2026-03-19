@@ -6,10 +6,10 @@ export default function Location() {
   return (
     <section id="ubicacion" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
       <div className="section-divider mb-12 md:mb-24" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -57,7 +57,7 @@ export default function Location() {
             transition={{ duration: 0.65, delay: 0.1 }}
           >
             {/* Address */}
-            <div className="glass rounded-2xl p-6">
+            <div className="glass rounded-2xl p-4 sm:p-6">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5 text-black" />
@@ -74,7 +74,7 @@ export default function Location() {
             </div>
 
             {/* Contact */}
-            <div className="glass rounded-2xl p-6 space-y-4">
+            <div className="glass rounded-2xl p-4 sm:p-6 space-y-4">
               <h3 className="font-bold text-white">Contacto</h3>
               <a
                 href="tel:+5726001234"
@@ -102,7 +102,7 @@ export default function Location() {
             </div>
 
             {/* How to get there */}
-            <div className="glass rounded-2xl p-6">
+            <div className="glass rounded-2xl p-4 sm:p-6">
               <h3 className="font-bold text-white mb-4">Cómo llegar</h3>
               <div className="space-y-3">
                 {[

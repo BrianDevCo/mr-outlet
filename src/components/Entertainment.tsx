@@ -54,10 +54,10 @@ export default function Entertainment() {
   return (
     <section id="entretenimiento" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
       <div className="section-divider mb-12 md:mb-24" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -76,7 +76,7 @@ export default function Entertainment() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {zones.map((zone, i) => {
             const Icon = zone.icon;
             return (
@@ -88,9 +88,9 @@ export default function Entertainment() {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.45, delay: (i % 3) * 0.1 }}
               >
-                <div className={`bg-gradient-to-b ${zone.color} to-transparent p-8`}>
+                <div className={`bg-gradient-to-b ${zone.color} to-transparent p-5 sm:p-8`}>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-4xl sm:text-5xl">{zone.emoji}</span>
+                    <span className="text-4xl">{zone.emoji}</span>
                     <span className="text-xs text-gray-500 border border-[#2A2A2A] px-3 py-1 rounded-full">
                       {zone.floor}
                     </span>
@@ -102,7 +102,7 @@ export default function Entertainment() {
                     </h3>
                   </div>
                 </div>
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <p className="text-sm text-gray-400 leading-relaxed mb-4">{zone.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {zone.features.map((f) => (

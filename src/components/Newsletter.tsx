@@ -20,7 +20,7 @@ export default function Newsletter() {
   return (
     <section className="py-20" style={{ backgroundColor: "var(--bg)" }}>
       <div className="section-divider mb-20" />
-      <div className="max-w-2xl mx-auto px-6 text-center">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
         <div className="glass rounded-3xl p-6 sm:p-10 border border-[#FF5229]/20">
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-5">
             <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-black" />

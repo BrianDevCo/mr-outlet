@@ -10,8 +10,8 @@ const links = {
 export default function Footer() {
   return (
     <footer className="bg-[#080808] border-t border-[#1E1E1E] pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
@@ -35,7 +35,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-[#141414] border border-[#2A2A2A] flex items-center justify-center text-gray-500 hover:text-[#FF5229] hover:border-[#FF5229]/30 transition-all"
+                  className="w-11 h-11 rounded-lg bg-[#141414] border border-[#2A2A2A] flex items-center justify-center text-gray-500 hover:text-[#FF5229] hover:border-[#FF5229]/30 transition-all"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -65,10 +65,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-[#1E1E1E] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-600">
+          <p className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
             © {new Date().getFullYear()} MR Outlet · Todos los derechos reservados
           </p>
-          <p className="text-sm text-gray-700">
+          <p className="text-xs sm:text-sm text-gray-700 text-center sm:text-right">
             Poblado Campestre, Palmira – Cali, Colombia
           </p>
         </div>

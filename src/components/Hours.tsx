@@ -34,10 +34,10 @@ export default function Hours() {
   return (
     <section id="horarios" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
       <div className="section-divider mb-12 md:mb-24" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}

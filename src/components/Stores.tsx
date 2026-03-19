@@ -47,10 +47,10 @@ export default function Stores() {
 
   return (
     <section id="tiendas" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -103,11 +103,11 @@ export default function Stores() {
 
         {/* Grid */}
         {filtered.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {filtered.map((store, i) => (
               <motion.div
                 key={store.name}
-                className="glass rounded-2xl p-5 hover:border-[#FF5229]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,82,41,0.1)] group cursor-pointer relative"
+                className="glass rounded-2xl p-3 sm:p-5 hover:border-[#FF5229]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,82,41,0.1)] group cursor-pointer relative"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -118,12 +118,12 @@ export default function Stores() {
                     NUEVO
                   </span>
                 )}
-                <div className="text-4xl mb-3">{store.emoji}</div>
-                <h3 className="font-bold text-white group-hover:text-[#FF5229] transition-colors mb-1">
+                <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{store.emoji}</div>
+                <h3 className="font-bold text-white group-hover:text-[#FF5229] transition-colors mb-1 text-sm sm:text-base">
                   {store.name}
                 </h3>
-                <p className="text-xs text-gray-500 mb-2">{store.floor}</p>
-                <p className="text-sm text-gray-400 leading-relaxed">{store.description}</p>
+                <p className="text-xs text-gray-500 mb-1 sm:mb-2">{store.floor}</p>
+                <p className="text-xs sm:text-sm text-gray-400 leading-relaxed hidden sm:block">{store.description}</p>
               </motion.div>
             ))}
           </div>

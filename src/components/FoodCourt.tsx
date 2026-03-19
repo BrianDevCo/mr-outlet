@@ -69,10 +69,10 @@ export default function FoodCourt() {
   return (
     <section id="gastronomia" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
       <div className="section-divider mb-12 md:mb-24" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -91,7 +91,7 @@ export default function FoodCourt() {
         </motion.div>
 
         {/* Restaurant grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {restaurants.map((r, i) => (
             <motion.div
               key={r.name}
@@ -101,10 +101,10 @@ export default function FoodCourt() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
             >
-              <div className={`bg-gradient-to-b ${r.bg} p-8 text-center`}>
-                <span className="text-4xl sm:text-6xl">{r.emoji}</span>
+              <div className={`bg-gradient-to-b ${r.bg} p-5 sm:p-8 text-center`}>
+                <span className="text-4xl sm:text-5xl">{r.emoji}</span>
               </div>
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <h3 className="font-bold text-white text-lg group-hover:text-[#FF5229] transition-colors">
@@ -132,13 +132,13 @@ export default function FoodCourt() {
 
         {/* Banner */}
         <motion.div
-          className="mt-12 rounded-2xl glass p-8 text-center border border-[#FF5229]/20"
+          className="mt-8 sm:mt-12 rounded-2xl glass p-4 sm:p-8 text-center border border-[#FF5229]/20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-base sm:text-lg">
             🍽️ Todos los restaurantes tienen{" "}
             <span className="text-[#FF5229] font-semibold">menú digital</span> disponible.
             Escanea el QR en cada mesa o pregunta al mesero.

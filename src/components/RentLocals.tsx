@@ -107,7 +107,7 @@ export default function RentLocals() {
   return (
     <section id="alquiler" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
       <div className="section-divider mb-12 md:mb-24" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Header — siempre visible, actúa como trigger */}
         <motion.div
@@ -125,7 +125,7 @@ export default function RentLocals() {
               <Building2 className="w-4 h-4" />
               <span>Oportunidad de Negocio</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
               Alquila tu <span className="gold-text">Local</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-6">
@@ -159,13 +159,13 @@ export default function RentLocals() {
         <div className="mt-10">
 
         {/* Benefits strip */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
           {benefits.map((b, i) => {
             const Icon = b.icon;
             return (
               <motion.div
                 key={b.title}
-                className="glass rounded-xl p-5 text-center hover:border-[#FF5229]/40 transition-colors"
+                className="glass rounded-xl p-3 sm:p-5 text-center hover:border-[#FF5229]/40 transition-colors"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -202,7 +202,7 @@ export default function RentLocals() {
         </div>
 
         {/* Locals grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-14 sm:mb-20">
           {filtered.map((local, i) => (
             <motion.div
               key={local.id}
@@ -219,7 +219,7 @@ export default function RentLocals() {
               {/* Top bar */}
               <div className={`h-1.5 ${local.available ? "gold-gradient" : "bg-[#2A2A2A]"}`} />
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Header row */}
                 <div className="flex items-start justify-between mb-4">
                   <div>
@@ -228,7 +228,7 @@ export default function RentLocals() {
                         ⭐ DESTACADO
                       </span>
                     )}
-                    <h3 className="text-xl font-black text-white group-hover:text-[#FF5229] transition-colors">
+                    <h3 className="text-base sm:text-xl font-black text-white group-hover:text-[#FF5229] transition-colors">
                       {local.name}
                     </h3>
                     <p className="text-sm text-gray-500">{local.type}</p>
@@ -287,7 +287,7 @@ export default function RentLocals() {
         </div>
 
         {/* Contact form */}
-        <div id="contacto-alquiler" className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-start">
+        <div id="contacto-alquiler" className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-start mt-4">
           {/* Left info */}
           <div>
             <h3 className="text-3xl font-black mb-4">

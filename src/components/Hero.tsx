@@ -45,11 +45,11 @@ export default function Hero() {
       <div className="absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-transparent via-[#FF5229]/10 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FF5229]/30 bg-[#FF5229]/5 mb-8">
-          <span className="w-2 h-2 rounded-full bg-[#FF5229] animate-pulse" />
-          <span className="text-[#FF5229] text-sm font-medium tracking-widest uppercase">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-full border border-[#FF5229]/30 bg-[#FF5229]/5 mb-8">
+          <span className="w-2 h-2 rounded-full bg-[#FF5229] animate-pulse flex-shrink-0" />
+          <span className="text-[#FF5229] text-xs sm:text-sm font-medium tracking-widest uppercase">
             Ahora Abierto · Poblado Campestre
           </span>
         </div>
@@ -61,17 +61,17 @@ export default function Hero() {
             alt="MR Outlet"
             width={100}
             height={100}
-            className="rounded-full shadow-[0_0_40px_rgba(255,82,41,0.3)] w-20 h-20 md:w-28 md:h-28"
+            className="rounded-full shadow-[0_0_40px_rgba(255,82,41,0.3)] w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28"
             priority
           />
         </div>
 
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight mb-4 leading-none">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tight mb-4 leading-none">
           <span className="block text-white">MR</span>
           <span className="block gold-text">OUTLET</span>
         </h1>
 
-        <p className="text-gray-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 px-2">
+        <p className="text-gray-400 text-sm sm:text-base md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 px-2">
           El destino de compras más exclusivo del sur de Cali.
           Moda, gastronomía y entretenimiento en un solo lugar.
         </p>
