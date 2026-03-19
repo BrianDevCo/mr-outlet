@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-brand: #FF5229;
+  --color-brand-2: #E91E8C;
+  --color-brand-3: #FF8A00;
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── CSS Variables por tema ─────────────────────── */
+:root {
+  --bg:        #0A0A0A;
+  --bg-alt:    #0D0D0D;
+  --surface:   #141414;
+  --surface-2: #1E1E1E;
+  --surface-3: #2A2A2A;
+  --footer-bg: #080808;
+  --text:      #ffffff;
+  --text-muted:#9CA3AF;
+  --text-faint:#4B5563;
+  --border:    rgba(255,82,41,0.15);
+  --glass-bg:  rgba(255,255,255,0.04);
+  --navbar-bg: rgba(10,10,10,0.95);
+}
+
+html.light {
+  --bg:        #F5F5F5;
+  --bg-alt:    #EBEBEB;
+  --surface:   #FFFFFF;
+  --surface-2: #F0F0F0;
+  --surface-3: #E0E0E0;
+  --footer-bg: #1A1A1A;
+  --text:      #111111;
+  --text-muted:#4B5563;
+  --text-faint:#9CA3AF;
+  --border:    rgba(255,82,41,0.2);
+  --glass-bg:  rgba(255,255,255,0.7);
+  --navbar-bg: rgba(245,245,245,0.95);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #FF8A00, #FF5229, #E91E8C);
+  border-radius: 3px;
+}
+
+/* ── Utility classes ─────────────────────────────── */
+.gold-gradient {
+  background: linear-gradient(135deg, #FF8A00, #FF5229, #E91E8C);
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #FF8A00, #FF5229, #E91E8C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.section-divider {
+  background: linear-gradient(90deg, transparent, #FF5229, #E91E8C, transparent);
+  height: 1px;
+  width: 100%;
+  opacity: 0.4;
+}
+
+/* ── Light mode overrides ─────────────────────────── */
+html.light section,
+html.light footer,
+html.light header {
+  transition: background-color 0.3s ease;
+}
+
+html.light .bg-\[\#0A0A0A\]  { background-color: var(--bg) !important; }
+html.light .bg-\[\#0D0D0D\]  { background-color: var(--bg-alt) !important; }
+html.light .bg-\[\#141414\]  { background-color: var(--surface) !important; }
+html.light .bg-\[\#1E1E1E\]  { background-color: var(--surface-2) !important; }
+html.light .bg-\[\#080808\]  { background-color: var(--footer-bg) !important; }
+
+html.light .border-\[\#2A2A2A\]  { border-color: var(--surface-3) !important; }
+html.light .border-\[\#1E1E1E\]  { border-color: var(--surface-3) !important; }
+
+html.light .text-white   { color: var(--text) !important; }
+html.light .text-gray-300 { color: #374151 !important; }
+html.light .text-gray-400 { color: var(--text-muted) !important; }
+html.light .text-gray-500 { color: #6B7280 !important; }
+html.light .text-gray-600 { color: var(--text-faint) !important; }
+html.light .text-gray-700 { color: #9CA3AF !important; }
+
+html.light .placeholder-gray-600::placeholder { color: #9CA3AF !important; }
+
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: var(--surface-2) !important;
+  color: var(--text) !important;
+  border-color: var(--surface-3) !important;
+}
+
+/* Navbar light */
+html.light .navbar-scrolled {
+  background: var(--navbar-bg) !important;
+  border-bottom-color: rgba(255,82,41,0.2) !important;
+}
+
+/* Section alt bg */
+html.light .section-alt { background-color: var(--bg-alt) !important; }
