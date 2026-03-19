@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Building2, CheckCircle, Phone, Mail, Send, Ruler, Users, TrendingUp, MapPin } from "lucide-react";
+import { Building2, CheckCircle, Phone, Mail, Send, Ruler, Users, TrendingUp, MapPin, ChevronDown } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 
 const locals = [
   {
@@ -87,6 +88,7 @@ const benefits = [
 ];
 
 export default function RentLocals() {
+  const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState<"all" | "available">("available");
   const [form, setForm] = useState({ name: "", phone: "", email: "", interest: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -103,30 +105,58 @@ export default function RentLocals() {
   };
 
   return (
-    <section id="alquiler" className="py-24" style={{ backgroundColor: "var(--bg)" }}>
-      <div className="section-divider mb-24" />
+    <section id="alquiler" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
+      <div className="section-divider mb-12 md:mb-24" />
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Header */}
+        {/* Header — siempre visible, actúa como trigger */}
         <motion.div
-          className="text-center mb-6"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 text-[#FF5229] text-sm font-medium tracking-widest uppercase mb-4">
-            <Building2 className="w-4 h-4" />
-            <span>Oportunidad de Negocio</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
-            Alquila tu <span className="gold-text">Local</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Instala tu negocio en el centro comercial más nuevo de Poblado Campestre.
-            Locales disponibles para todo tipo de emprendimiento.
-          </p>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="w-full text-center group focus:outline-none"
+            aria-expanded={open}
+          >
+            <div className="inline-flex items-center gap-2 text-[#FF5229] text-sm font-medium tracking-widest uppercase mb-4">
+              <Building2 className="w-4 h-4" />
+              <span>Oportunidad de Negocio</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black mb-4">
+              Alquila tu <span className="gold-text">Local</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
+              Instala tu negocio en el centro comercial más nuevo de Poblado Campestre.
+              Toca para ver locales disponibles.
+            </p>
+            {/* Flecha animada */}
+            <div className="flex justify-center">
+              <motion.div
+                animate={{ rotate: open ? 180 : 0 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center shadow-lg"
+              >
+                <ChevronDown className="w-6 h-6 text-white" />
+              </motion.div>
+            </div>
+          </button>
         </motion.div>
+
+        {/* Contenido colapsable */}
+        <AnimatePresence>
+        {open && (
+        <motion.div
+          key="rent-content"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          style={{ overflow: "hidden" }}
+        >
+        <div className="mt-10">
 
         {/* Benefits strip */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
@@ -160,7 +190,7 @@ export default function RentLocals() {
             <button
               key={f.id}
               onClick={() => setFilter(f.id as "all" | "available")}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                 filter === f.id
                   ? "gold-gradient text-white"
                   : "bg-[#141414] border border-[#2A2A2A] text-gray-400 hover:border-[#FF5229]/30"
@@ -257,7 +287,7 @@ export default function RentLocals() {
         </div>
 
         {/* Contact form */}
-        <div id="contacto-alquiler" className="grid lg:grid-cols-2 gap-12 items-start">
+        <div id="contacto-alquiler" className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-start">
           {/* Left info */}
           <div>
             <h3 className="text-3xl font-black mb-4">
@@ -301,7 +331,7 @@ export default function RentLocals() {
           </div>
 
           {/* Form */}
-          <div className="glass rounded-2xl p-8 border border-[#FF5229]/10">
+          <div className="glass rounded-2xl p-5 sm:p-8 border border-[#FF5229]/10">
             {sent ? (
               <div className="text-center py-10">
                 <div className="w-16 h-16 rounded-full gold-gradient flex items-center justify-center mx-auto mb-4">
@@ -387,6 +417,12 @@ export default function RentLocals() {
             )}
           </div>
         </div>
+
+        </div>{/* /mt-10 */}
+        </motion.div>
+        )}
+        </AnimatePresence>
+
       </div>
     </section>
   );

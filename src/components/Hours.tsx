@@ -32,8 +32,8 @@ export default function Hours() {
   const todayIdx = getTodayIndex();
 
   return (
-    <section id="horarios" className="py-24" style={{ backgroundColor: "var(--bg)" }}>
-      <div className="section-divider mb-24" />
+    <section id="horarios" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
+      <div className="section-divider mb-12 md:mb-24" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -47,12 +47,12 @@ export default function Hours() {
             <Clock className="w-4 h-4" />
             <span>Horarios & Servicios</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
             Visítanos <span className="gold-text">Cuando Quieras</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Schedule */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

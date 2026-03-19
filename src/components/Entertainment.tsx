@@ -52,8 +52,8 @@ const zones = [
 
 export default function Entertainment() {
   return (
-    <section id="entretenimiento" className="py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
-      <div className="section-divider mb-24" />
+    <section id="entretenimiento" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
+      <div className="section-divider mb-12 md:mb-24" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -67,7 +67,7 @@ export default function Entertainment() {
             <Zap className="w-4 h-4" />
             <span>Diversión</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
             <span className="gold-text">Entretenimiento</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
@@ -90,7 +90,7 @@ export default function Entertainment() {
               >
                 <div className={`bg-gradient-to-b ${zone.color} to-transparent p-8`}>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-5xl">{zone.emoji}</span>
+                    <span className="text-4xl sm:text-5xl">{zone.emoji}</span>
                     <span className="text-xs text-gray-500 border border-[#2A2A2A] px-3 py-1 rounded-full">
                       {zone.floor}
                     </span>

@@ -55,35 +55,35 @@ export default function Hero() {
         </div>
 
         {/* Logo */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6">
           <Image
             src="/logo.jpg"
             alt="MR Outlet"
-            width={120}
-            height={120}
-            className="rounded-full shadow-[0_0_40px_rgba(255,82,41,0.3)]"
+            width={100}
+            height={100}
+            className="rounded-full shadow-[0_0_40px_rgba(255,82,41,0.3)] w-20 h-20 md:w-28 md:h-28"
             priority
           />
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-6 leading-none">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight mb-4 leading-none">
           <span className="block text-white">MR</span>
           <span className="block gold-text">OUTLET</span>
         </h1>
 
-        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+        <p className="text-gray-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 px-2">
           El destino de compras más exclusivo del sur de Cali.
           Moda, gastronomía y entretenimiento en un solo lugar.
         </p>
 
         {/* Stats */}
-        <div className="flex flex-wrap justify-center gap-8 mb-12">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-6 mb-8">
           {[
             { icon: <MapPin className="w-4 h-4" />, label: "Poblado Campestre, Cali" },
             { icon: <Clock className="w-4 h-4" />, label: "Lun–Dom 10am–9pm" },
             { icon: <Star className="w-4 h-4" />, label: "+50 Tiendas & Restaurantes" },
           ].map((s, i) => (
-            <div key={i} className="flex items-center gap-2 text-[#FF5229]">
+            <div key={i} className="flex items-center justify-center gap-2 text-[#FF5229]">
               {s.icon}
               <span className="text-sm text-gray-300">{s.label}</span>
             </div>
@@ -91,16 +91,16 @@ export default function Hero() {
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center px-4 sm:px-0">
           <a
             href="#tiendas"
-            className="px-8 py-3.5 rounded-full gold-gradient text-black font-bold text-sm tracking-wider hover:opacity-90 transition-all hover:scale-105"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full gold-gradient text-white font-bold text-sm tracking-wider hover:opacity-90 transition-all hover:scale-105 text-center"
           >
             Ver Tiendas
           </a>
           <a
             href="#ubicacion"
-            className="px-8 py-3.5 rounded-full border border-[#FF5229]/40 text-[#FF5229] font-semibold text-sm tracking-wider hover:bg-[#FF5229]/10 transition-all"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-[#FF5229]/40 text-[#FF5229] font-semibold text-sm tracking-wider hover:bg-[#FF5229]/10 transition-all text-center"
           >
             Cómo Llegar
           </a>

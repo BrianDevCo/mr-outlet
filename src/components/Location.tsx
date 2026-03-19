@@ -4,8 +4,8 @@ import { MapPin, Phone, Mail, Instagram, Navigation } from "lucide-react";
 
 export default function Location() {
   return (
-    <section id="ubicacion" className="py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
-      <div className="section-divider mb-24" />
+    <section id="ubicacion" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
+      <div className="section-divider mb-12 md:mb-24" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -19,7 +19,7 @@ export default function Location() {
             <MapPin className="w-4 h-4" />
             <span>Ubicación</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
             Cómo <span className="gold-text">Llegar</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
@@ -27,10 +27,10 @@ export default function Location() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-start">
           {/* Map embed */}
           <motion.div
-            className="rounded-2xl overflow-hidden border border-[#2A2A2A] h-96 bg-[#141414] relative"
+            className="rounded-2xl overflow-hidden border border-[#2A2A2A] h-64 sm:h-80 md:h-96 bg-[#141414] relative"
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.1 }}

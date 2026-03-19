@@ -21,11 +21,11 @@ export default function Newsletter() {
     <section className="py-20" style={{ backgroundColor: "var(--bg)" }}>
       <div className="section-divider mb-20" />
       <div className="max-w-2xl mx-auto px-6 text-center">
-        <div className="glass rounded-3xl p-10 border border-[#FF5229]/20">
-          <div className="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-6">
-            <Mail className="w-7 h-7 text-black" />
+        <div className="glass rounded-3xl p-6 sm:p-10 border border-[#FF5229]/20">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-5">
+            <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-black" />
           </div>
-          <h2 className="text-3xl font-black mb-3">
+          <h2 className="text-2xl sm:text-3xl font-black mb-3">
             ¿No te quieres perder <span className="gold-text">nada</span>?
           </h2>
           <p className="text-gray-400 mb-8">

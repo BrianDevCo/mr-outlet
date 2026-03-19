@@ -67,8 +67,8 @@ const restaurants = [
 
 export default function FoodCourt() {
   return (
-    <section id="gastronomia" className="py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
-      <div className="section-divider mb-24" />
+    <section id="gastronomia" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg-alt)" }}>
+      <div className="section-divider mb-12 md:mb-24" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -82,7 +82,7 @@ export default function FoodCourt() {
             <Utensils className="w-4 h-4" />
             <span>Gastronomía</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
             Food <span className="gold-text">Court</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
@@ -102,7 +102,7 @@ export default function FoodCourt() {
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
             >
               <div className={`bg-gradient-to-b ${r.bg} p-8 text-center`}>
-                <span className="text-6xl">{r.emoji}</span>
+                <span className="text-4xl sm:text-6xl">{r.emoji}</span>
               </div>
               <div className="p-5">
                 <div className="flex items-start justify-between mb-2">

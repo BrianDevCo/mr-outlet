@@ -46,7 +46,7 @@ export default function Stores() {
   });
 
   return (
-    <section id="tiendas" className="py-24" style={{ backgroundColor: "var(--bg)" }}>
+    <section id="tiendas" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -60,7 +60,7 @@ export default function Stores() {
             <ShoppingBag className="w-4 h-4" />
             <span>Directorio</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
             Nuestras <span className="gold-text">Tiendas</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
@@ -88,7 +88,7 @@ export default function Stores() {
               <button
                 key={cat.id}
                 onClick={() => setCategory(cat.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   category === cat.id
                     ? "gold-gradient text-black"
                     : "bg-[#141414] border border-[#2A2A2A] text-gray-400 hover:border-[#FF5229]/30 hover:text-[#FF5229]"

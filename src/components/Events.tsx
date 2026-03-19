@@ -87,8 +87,8 @@ export default function Events() {
   const filtered = filter === "all" ? events : events.filter((e) => e.type === filter);
 
   return (
-    <section id="eventos" className="py-24" style={{ backgroundColor: "var(--bg)" }}>
-      <div className="section-divider mb-24" />
+    <section id="eventos" className="py-12 md:py-24" style={{ backgroundColor: "var(--bg)" }}>
+      <div className="section-divider mb-12 md:mb-24" />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -102,7 +102,7 @@ export default function Events() {
             <Calendar className="w-4 h-4" />
             <span>Agenda</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
             Eventos & <span className="gold-text">Promociones</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
@@ -124,7 +124,7 @@ export default function Events() {
               <button
                 key={f.id}
                 onClick={() => setFilter(f.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                   filter === f.id
                     ? "gold-gradient text-black"
                     : "bg-[#141414] border border-[#2A2A2A] text-gray-400 hover:border-[#FF5229]/30 hover:text-[#FF5229]"

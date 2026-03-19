@@ -85,21 +85,21 @@ export default function Navbar() {
         </div>
 
         {/* Mobile right */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center gap-1">
           <button
             onClick={toggle}
             aria-label="Cambiar tema"
-            className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all ${
+            className={`w-11 h-11 rounded-full flex items-center justify-center border transition-all ${
               isLight
                 ? "bg-white border-gray-200 text-gray-700"
                 : "bg-white/5 border-white/10 text-gray-300"
             }`}
           >
-            {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            {isLight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
           <button
             onClick={() => setOpen(!open)}
-            className="p-2"
+            className="w-11 h-11 flex items-center justify-center"
             style={{ color: "var(--text)" }}
             aria-label="Menu"
           >
