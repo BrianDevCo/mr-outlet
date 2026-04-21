@@ -5,47 +5,45 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface AdSlide {
   id: number;
-  image?: string;           // URL de imagen real (opcional)
-  gradient: string;         // gradiente de fondo cuando no hay imagen
+  image: string;         // URL de la imagen de fondo
   tag: string;
   title: string;
   subtitle: string;
   cta?: string;
   ctaHref?: string;
-  emoji: string;
   accentColor: string;
+  overlayColor: string;  // color del gradiente izquierdo
 }
 
-// ──────────────────────────────────────────
-// Agrega tus banners aquí.
-// Pon image: "/banners/tu-imagen.jpg" para usar una foto real.
-// ──────────────────────────────────────────
+// ── Edita los banners aquí ──────────────────────────────────
+// Para usar tus propias fotos: image: "/banners/mi-foto.jpg"
+// ────────────────────────────────────────────────────────────
 const slides: AdSlide[] = [
   {
     id: 1,
-    gradient: "from-purple-950 via-purple-900/80 to-[#0A0A0A]",
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1600&h=700&fit=crop&q=80",
     tag: "🎵 Concierto en Vivo",
-    title: "Próximo Concierto",
-    subtitle: "Este domingo 3 · Plaza Central · Entrada libre para todos",
+    title: "Próximo\nConcierto",
+    subtitle: "Este domingo 3 · Plaza Central MR Outlet · Entrada libre para todos",
     cta: "Ver agenda",
     ctaHref: "#eventos",
-    emoji: "🎤",
     accentColor: "#A855F7",
+    overlayColor: "100,0,150",
   },
   {
     id: 2,
-    gradient: "from-blue-950 via-blue-900/80 to-[#0A0A0A]",
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600&h=700&fit=crop&q=80",
     tag: "🎬 Gran Inauguración",
-    title: "Inauguración Cineworld",
-    subtitle: "El mejor cine del sur de Cali ya abrió sus puertas · 4 salas IMAX · Dolby Atmos",
+    title: "Inauguración\nCineworld",
+    subtitle: "4 salas IMAX · Dolby Atmos · El mejor cine del sur de Cali ya abrió",
     cta: "Conocer más",
     ctaHref: "#entretenimiento",
-    emoji: "🎬",
     accentColor: "#3B82F6",
+    overlayColor: "0,30,100",
   },
 ];
 
-const INTERVAL = 5000;
+const INTERVAL = 6000;
 
 export default function AdBanner() {
   const [current, setCurrent] = useState(0);
@@ -66,7 +64,7 @@ export default function AdBanner() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ height: "clamp(180px, 38vw, 460px)" }}
+      style={{ height: "clamp(220px, 45vw, 560px)" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="Banners publicitarios"
@@ -74,87 +72,121 @@ export default function AdBanner() {
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}
-          className="absolute inset-0 flex items-center"
+          className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.65 }}
+          transition={{ duration: 0.8 }}
         >
-          {/* Imagen de fondo (si existe) */}
-          {slide.image && (
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${slide.image})` }}
+          {/* Imagen — efecto zoom lento */}
+          <motion.div
+            className="absolute inset-0"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 7, ease: "linear" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={slide.image}
+              alt={slide.title.replace("\n", " ")}
+              className="w-full h-full object-cover"
             />
-          )}
+          </motion.div>
 
-          {/* Gradiente de fondo */}
-          <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient}`} />
+          {/* Overlay oscuro para legibilidad */}
+          <div className="absolute inset-0 bg-black/50" />
 
-          {/* Capa oscura izquierda para legibilidad del texto */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
-
-          {/* Decoraciones */}
+          {/* Gradiente lateral */}
           <div
-            className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10"
-            style={{ background: `radial-gradient(ellipse at right center, ${slide.accentColor}, transparent 70%)` }}
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(to right, rgba(${slide.overlayColor},0.85) 0%, rgba(${slide.overlayColor},0.4) 45%, transparent 75%)`,
+            }}
+          />
+
+          {/* Línea decorativa de color */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-1 sm:w-1.5"
+            style={{ background: slide.accentColor }}
           />
 
           {/* Contenido */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 w-full flex items-center gap-6 sm:gap-10">
-            <motion.div
-              className="hidden sm:block text-5xl md:text-7xl lg:text-8xl select-none"
-              initial={{ scale: 0.6, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-            >
-              {slide.emoji}
-            </motion.div>
-
-            <motion.div
-              className="max-w-lg"
-              initial={{ x: -30, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <span
-                className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase mb-3 px-3 py-1 rounded-full border"
-                style={{
-                  color: slide.accentColor,
-                  borderColor: `${slide.accentColor}50`,
-                  background: `${slide.accentColor}18`,
-                }}
+          <div className="relative z-10 h-full flex items-center">
+            <div className="max-w-7xl mx-auto px-8 sm:px-12 w-full">
+              <motion.div
+                key={`content-${slide.id}`}
+                initial={{ x: -40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="max-w-xl"
               >
-                {slide.tag}
-              </span>
-
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-2 leading-tight drop-shadow-lg">
-                {slide.title}
-              </h2>
-
-              <p className="text-gray-300 text-sm sm:text-base mb-5 leading-relaxed">
-                {slide.subtitle}
-              </p>
-
-              {slide.cta && (
-                <a
-                  href={slide.ctaHref || "#"}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm text-white gold-gradient hover:opacity-90 transition-all hover:scale-105"
+                {/* Tag */}
+                <span
+                  className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full"
+                  style={{
+                    color: slide.accentColor,
+                    border: `1px solid ${slide.accentColor}60`,
+                    background: `${slide.accentColor}20`,
+                    backdropFilter: "blur(8px)",
+                  }}
                 >
-                  {slide.cta}
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-              )}
-            </motion.div>
+                  {slide.tag}
+                </span>
+
+                {/* Título — salto de línea intencional */}
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-none mb-4 drop-shadow-2xl">
+                  {slide.title.split("\n").map((line, i) => (
+                    <span key={i} className="block">
+                      {i === 1 ? <span className="gold-text">{line}</span> : line}
+                    </span>
+                  ))}
+                </h2>
+
+                {/* Subtítulo */}
+                <p className="text-gray-200 text-sm sm:text-base mb-6 leading-relaxed max-w-md drop-shadow-lg">
+                  {slide.subtitle}
+                </p>
+
+                {/* CTA */}
+                {slide.cta && (
+                  <a
+                    href={slide.ctaHref || "#"}
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-sm text-white gold-gradient hover:opacity-90 transition-all hover:scale-105 shadow-xl"
+                  >
+                    {slide.cta}
+                    <ChevronRight className="w-4 h-4" />
+                  </a>
+                )}
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* Miniaturas de slides (derecha) — solo desktop */}
+      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col gap-2">
+        {slides.map((s, i) => (
+          <button
+            key={s.id}
+            onClick={() => setCurrent(i)}
+            aria-label={`Ir al banner ${i + 1}`}
+            className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
+              i === current
+                ? "w-14 h-10 ring-2 ring-white opacity-100"
+                : "w-12 h-8 opacity-40 hover:opacity-70"
+            }`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={s.image} alt="" className="w-full h-full object-cover" />
+          </button>
+        ))}
+      </div>
 
       {/* Flecha izquierda */}
       <button
         onClick={prev}
         aria-label="Banner anterior"
-        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -163,25 +195,27 @@ export default function AdBanner() {
       <button
         onClick={next}
         aria-label="Banner siguiente"
-        className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+        className="absolute right-16 sm:right-24 md:right-28 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            aria-label={`Ir al banner ${i + 1}`}
-            className={`rounded-full transition-all duration-300 ${
-              i === current
-                ? "w-6 h-2.5 gold-gradient"
-                : "w-2.5 h-2.5 bg-white/30 hover:bg-white/60"
-            }`}
-          />
-        ))}
+      {/* Dots + contador */}
+      <div className="absolute bottom-4 left-8 sm:left-12 z-20 flex items-center gap-3">
+        <span className="text-white/60 text-xs font-mono tabular-nums">
+          {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+        </span>
+        <div className="flex items-center gap-1.5">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current ? "w-8 h-2 gold-gradient" : "w-2 h-2 bg-white/30 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Barra de progreso */}
