@@ -25,12 +25,18 @@ export default function Newsletter() {
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl gold-gradient flex items-center justify-center mx-auto mb-5">
             <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-black" />
           </div>
+          {/* Incentivo */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FF5229]/30 bg-[#FF5229]/8 mb-5">
+            <span className="text-lg">🎁</span>
+            <span className="text-[#FF5229] text-sm font-bold">15% de descuento en tu primera visita</span>
+          </div>
+
           <h2 className="text-2xl sm:text-3xl font-black mb-3">
             ¿No te quieres perder <span className="gold-text">nada</span>?
           </h2>
-          <p className="text-gray-400 mb-8">
-            Suscríbete a nuestro newsletter y recibe primero las mejores promociones, eventos exclusivos
-            y descuentos especiales directo a tu correo.
+          <p className="text-gray-400 mb-6">
+            Suscríbete y recibe un cupón del <strong className="text-white">15% OFF</strong> para usar
+            en cualquier tienda, más acceso anticipado a eventos exclusivos y las mejores promociones.
           </p>
 
           {submitted ? (

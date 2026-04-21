@@ -1,11 +1,37 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { ChevronDown, MapPin, Clock, Star } from "lucide-react";
 import Image from "next/image";
 
+// ── Fecha de la Gran Apertura Oficial ─────────────────────
+const OPENING_DATE = new Date("2026-05-17T10:00:00-05:00");
+
+interface TimeLeft { days: number; hours: number; minutes: number; seconds: number }
+
+function useCountdown(target: Date): TimeLeft {
+  const calc = useCallback((): TimeLeft => {
+    const diff = target.getTime() - Date.now();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    return {
+      days:    Math.floor(diff / 86_400_000),
+      hours:   Math.floor((diff % 86_400_000) / 3_600_000),
+      minutes: Math.floor((diff % 3_600_000) / 60_000),
+      seconds: Math.floor((diff % 60_000) / 1_000),
+    };
+  }, [target]);
+
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calc);
+  useEffect(() => {
+    const id = setInterval(() => setTimeLeft(calc()), 1000);
+    return () => clearInterval(id);
+  }, [calc]);
+  return timeLeft;
+}
+
 export default function Hero() {
   const particlesRef = useRef<HTMLDivElement>(null);
+  const { days, hours, minutes, seconds } = useCountdown(OPENING_DATE);
 
   useEffect(() => {
     const container = particlesRef.current;
@@ -91,7 +117,7 @@ export default function Hero() {
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center px-4 sm:px-0">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center px-4 sm:px-0 mb-10">
           <a
             href="#tiendas"
             className="w-full sm:w-auto px-8 py-3.5 rounded-full gold-gradient text-white font-bold text-sm tracking-wider hover:opacity-90 transition-all hover:scale-105 text-center"
@@ -104,6 +130,35 @@ export default function Hero() {
           >
             Cómo Llegar
           </a>
+        </div>
+
+        {/* Countdown apertura */}
+        <div className="px-4">
+          <p className="text-xs text-gray-500 tracking-widest uppercase mb-3">
+            Gran Apertura Oficial · 17 de Mayo 2026
+          </p>
+          <div className="inline-flex items-center gap-2 sm:gap-4">
+            {[
+              { value: days,    label: "Días" },
+              { value: hours,   label: "Horas" },
+              { value: minutes, label: "Min" },
+              { value: seconds, label: "Seg" },
+            ].map((unit, i) => (
+              <div key={unit.label} className="flex items-center gap-2 sm:gap-4">
+                <div className="flex flex-col items-center">
+                  <div className="glass rounded-xl w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center border border-[#FF5229]/20">
+                    <span className="text-xl sm:text-2xl font-black gold-text tabular-nums">
+                      {String(unit.value).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <span className="text-gray-600 text-xs mt-1 tracking-wider">{unit.label}</span>
+                </div>
+                {i < 3 && (
+                  <span className="text-[#FF5229]/60 font-black text-xl mb-5 select-none">:</span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Building2, CheckCircle, Phone, Mail, Send, Ruler, Users, TrendingUp, MapPin, ChevronDown } from "lucide-react";
+import { Building2, CheckCircle, Phone, Mail, Send, Ruler, Users, TrendingUp, MapPin, ChevronDown, Download } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 
 const locals = [
@@ -298,6 +298,23 @@ export default function RentLocals() {
               mostrarte los locales disponibles, resolver tus dudas y ayudarte a encontrar el
               espacio perfecto para tu negocio.
             </p>
+            {/* Kit descargable */}
+            <a
+              href="/kit-inversionista-mroutlet.pdf"
+              download
+              className="flex items-center gap-3 glass rounded-xl p-4 hover:border-[#FF5229]/40 transition-colors group mb-6 border-dashed"
+            >
+              <div className="w-10 h-10 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                <Download className="w-5 h-5 text-white" />
+              </div>
+              <div className="flex-1">
+                <p className="font-semibold text-white group-hover:text-[#FF5229] transition-colors text-sm">
+                  Descargar Kit del Inversionista
+                </p>
+                <p className="text-xs text-gray-500">PDF · Planos, tarifas y condiciones comerciales</p>
+              </div>
+            </a>
+
             <div className="space-y-4">
               <a
                 href="tel:+5726001234"
