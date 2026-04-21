@@ -1,15 +1,45 @@
 "use client";
 import { motion } from "framer-motion";
 import { Instagram, Heart, MessageCircle, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
-// Reemplaza estos con imágenes reales de Instagram cuando tengas la integración
 const posts = [
-  { id: 1, gradient: "from-pink-900 via-rose-800 to-orange-900", likes: "1.2K", comments: "48", emoji: "🛍️", caption: "¡Nuevas tiendas llegaron al outlet!" },
-  { id: 2, gradient: "from-blue-900 via-indigo-800 to-purple-900", likes: "987", comments: "31", emoji: "🎬", caption: "Cineworld ya abrió sus puertas 🎉" },
-  { id: 3, gradient: "from-amber-900 via-orange-800 to-red-900", likes: "2.1K", comments: "76", emoji: "🍔", caption: "Food court 100% listo para ti" },
-  { id: 4, gradient: "from-green-900 via-emerald-800 to-teal-900", likes: "743", comments: "22", emoji: "🎮", caption: "Zona Gamer: el arcade más grande del sur" },
-  { id: 5, gradient: "from-violet-900 via-purple-800 to-pink-900", likes: "1.5K", comments: "59", emoji: "👗", caption: "Moda que marca tendencia" },
-  { id: 6, gradient: "from-cyan-900 via-blue-800 to-indigo-900", likes: "890", comments: "34", emoji: "✨", caption: "Descuentos de apertura en toda la tienda" },
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=600&fit=crop",
+    likes: "1.2K", comments: "48",
+    caption: "¡Nuevas tiendas abiertas en MR Outlet! 🛍️ Ven a conocerlas",
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&h=600&fit=crop",
+    likes: "987", comments: "31",
+    caption: "El lugar más exclusivo del sur de Cali ya está aquí ✨",
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=600&fit=crop",
+    likes: "2.1K", comments: "76",
+    caption: "Food Court con los mejores sabores 🍽️ ¿Cuál es tu favorito?",
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=600&fit=crop",
+    likes: "1.5K", comments: "59",
+    caption: "Moda, estilo y las mejores marcas en un solo lugar 👗",
+  },
+  {
+    id: 5,
+    image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&h=600&fit=crop",
+    likes: "743", comments: "22",
+    caption: "Shopping experience de otro nivel 🔥 #MROutlet",
+  },
+  {
+    id: 6,
+    image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&h=600&fit=crop",
+    likes: "890", comments: "34",
+    caption: "Descuentos de apertura en todas las tiendas 🎉 ¡No te lo pierdas!",
+  },
 ];
 
 const IG_PROFILE = "https://www.instagram.com/mroutlet___";
@@ -58,13 +88,14 @@ export default function InstagramFeed() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
             >
-              {/* Fondo */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient}`} />
-
-              {/* Emoji central */}
-              <div className="absolute inset-0 flex items-center justify-center text-4xl sm:text-5xl select-none">
-                {post.emoji}
-              </div>
+              {/* Imagen */}
+              <Image
+                src={post.image}
+                alt={post.caption}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 50vw, 33vw"
+              />
 
               {/* Overlay hover */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/55 transition-all duration-300 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
